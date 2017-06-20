@@ -2,9 +2,10 @@ import React from 'react';
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
 import { Image, Transformation, CloudinaryContext } from 'cloudinary-react';
+import config from '../config.json';
 
-const CLOUDINARY_UPLOAD_PRESET = '';
-const CLOUDINARY_UPLOAD_URL = '';
+const CLOUDINARY_UPLOAD_PRESET = config.upload_preset;
+const CLOUDINARY_UPLOAD_URL = config.upload_url;
 
 class Cloudinary extends React.Component {
     constructor(props) {
