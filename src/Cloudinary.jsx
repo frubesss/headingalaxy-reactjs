@@ -6,6 +6,7 @@ import config from '../config.json';
 
 const CLOUDINARY_UPLOAD_PRESET = config.upload_preset;
 const CLOUDINARY_UPLOAD_URL = config.upload_url;
+const CLOUDINARY_CLOUD_NAME = config.cloud_name;
 
 class Cloudinary extends React.Component {
     constructor(props) {
@@ -13,7 +14,7 @@ class Cloudinary extends React.Component {
         this.state = {
             uploadedFileCloudinaryUrl: '',
             uploadedFilePublicId: '',
-            imageUploaded: false
+            fimageUploaded: false
         };
     }
 
@@ -66,7 +67,7 @@ class Cloudinary extends React.Component {
                         {this.state.uploadedFileCloudinaryUrl === ''
                             ? null
                             : <div>
-                                <CloudinaryContext cloudName="df3reurbk">
+                                <CloudinaryContext cloudName={CLOUDINARY_CLOUD_NAME}>
                                     <Image publicId={this.state.uploadedFilePublicId}>
                                         <Transformation
                                             gravity="face"

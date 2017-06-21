@@ -34,6 +34,7 @@ class Form extends React.Component {
         if (stepIndex > 0) {
             this.setState({ stepIndex: stepIndex - 1 });
         }
+        this.setState({ nextDisabled: false });
     };
 
     handleGalaxySelection = activeIndex => {
@@ -88,7 +89,7 @@ class Form extends React.Component {
                 </Stepper>
                 <div style={contentStyle}>
                     {finished
-                        ? <p>
+                        ? <div>
                             <a
                                 href="#"
                                 onClick={event => {
@@ -99,9 +100,9 @@ class Form extends React.Component {
                                 Click here
                             </a>{' '}
                             to reset the example.
-                        </p>
+                        </div>
                         : <div className="stepper-buttons">
-                            <p>{this.getStepContent(stepIndex)}</p>
+                            <div>{this.getStepContent(stepIndex)}</div>
                             <div style={{ marginTop: 12 }}>
                                 <FlatButton
                                     label="Back"
