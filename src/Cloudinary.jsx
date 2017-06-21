@@ -12,7 +12,8 @@ class Cloudinary extends React.Component {
         super(props);
         this.state = {
             uploadedFileCloudinaryUrl: '',
-            uploadedFilePublicId: ''
+            uploadedFilePublicId: '',
+            imageUploaded: false
         };
     }
 
@@ -39,23 +40,27 @@ class Cloudinary extends React.Component {
                 this.props.faceUploaded();
                 this.setState({
                     uploadedFileCloudinaryUrl: response.body.secure_url,
-                    uploadedFilePublicId: response.body.public_id
+                    uploadedFilePublicId: response.body.public_id,
+                    imageUploaded: true
                 });
             }
         });
     }
 
     render() {
+        const { imageUploaded } = this.state;
         return (
             <div>
-                <Dropzone
-                    className={'cloudinary-dropzone'}
-                    multiple={false}
-                    accept="image/*"
-                    onDrop={this.onImageDrop.bind(this)}
-                >
-                    <p>Drop an image or click to select a file to upload.</p>
-                </Dropzone>
+                {imageUploaded
+                    ? ''
+                    : <Dropzone
+                        className={'cloudinary-dropzone'}
+                        multiple={false}
+                        accept="image/*"
+                        onDrop={this.onImageDrop.bind(this)}
+                    >
+                        <p>Drop an image or click to select a file to upload.</p>
+                    </Dropzone>}
                 <div>
                     <div>
                         {this.state.uploadedFileCloudinaryUrl === ''
