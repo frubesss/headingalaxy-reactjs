@@ -2,7 +2,7 @@ import React from 'react';
 import { Step, StepLabel, Stepper } from 'material-ui/Stepper';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
-import Cloudinary from './Cloudinary';
+import FaceUpload from './FaceUpload';
 import GalaxySelection from './GalaxySelection';
 
 class Form extends React.Component {
@@ -14,10 +14,12 @@ class Form extends React.Component {
             galaxySelected: false,
             activeGalaxy: '',
             faceUploaded: false,
-            nextDisabled: true
+            nextDisabled: true,
+            uploadedFileCloudinaryUrl: '',
+            uploadedFilePublicId: ''
         };
         this.handleGalaxySelection = this.handleGalaxySelection.bind(this);
-        this.faceUploaded = this.faceUploaded.bind(this);
+        this.handleFaceUpload = this.handleFaceUpload.bind(this);
     }
 
     handleNext = () => {
@@ -45,10 +47,12 @@ class Form extends React.Component {
         });
     };
 
-    faceUploaded() {
+    handleFaceUpload(uploadedFileCloudinaryUrl, uploadedFilePublicId) {
         this.setState({
             faceUploaded: true,
-            nextDisabled: false
+            nextDisabled: false,
+            uploadedFileCloudinaryUrl: uploadedFileCloudinaryUrl,
+            uploadedFilePublicId: uploadedFilePublicId
         });
     }
 
@@ -62,7 +66,14 @@ class Form extends React.Component {
                     />
                 );
             case 1:
-                return <Cloudinary faceUploaded={this.faceUploaded} />;
+                return (
+                    <FaceUpload
+                        handleFaceUpload={this.handleFaceUpload}
+                        faceUploaded={this.state.faceUploaded}
+                        uploadedFileCloudinaryUrl={this.state.uploadedFileCloudinaryUrl}
+                        uploadedFilePublicId={this.state.uploadedFilePublicId}
+                    />
+                );
             case 2:
                 return '...';
             default:

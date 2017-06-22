@@ -8,16 +8,7 @@ const CLOUDINARY_UPLOAD_PRESET = config.upload_preset;
 const CLOUDINARY_UPLOAD_URL = config.upload_url;
 const CLOUDINARY_CLOUD_NAME = config.cloud_name;
 
-class Cloudinary extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            uploadedFileCloudinaryUrl: '',
-            uploadedFilePublicId: '',
-            fimageUploaded: false
-        };
-    }
-
+class FaceUpload extends React.Component {
     onImageDrop(files) {
         this.setState({
             uploadedFile: files[0]
@@ -38,22 +29,36 @@ class Cloudinary extends React.Component {
             }
 
             if (response.body.secure_url !== '') {
-                this.props.faceUploaded();
+                this.props.handleFaceUpload(
+                    response.body.secure_url,
+                    response.body.public_id
+                );
                 this.setState({
                     uploadedFileCloudinaryUrl: response.body.secure_url,
                     uploadedFilePublicId: response.body.public_id,
-                    imageUploaded: true
+                    faceUploaded: true
                 });
             }
         });
     }
 
     render() {
-        const { imageUploaded } = this.state;
         return (
             <div>
-                {imageUploaded
-                    ? ''
+                {this.props.faceUploaded
+                    ? <div>
+                        <CloudinaryContext cloudName={CLOUDINARY_CLOUD_NAME}>
+                            <Image publicId={this.props.uploadedFilePublicId}>
+                                <Transformation
+                                    gravity="face"
+                                    crop="thumb"
+                                    width="150"
+                                    height="150"
+                                    radius="max"
+                                />
+                            </Image>
+                        </CloudinaryContext>
+                    </div>
                     : <Dropzone
                         className={'cloudinary-dropzone'}
                         multiple={false}
@@ -62,28 +67,10 @@ class Cloudinary extends React.Component {
                     >
                         <p>Drop an image or click to select a file to upload.</p>
                     </Dropzone>}
-                <div>
-                    <div>
-                        {this.state.uploadedFileCloudinaryUrl === ''
-                            ? null
-                            : <div>
-                                <CloudinaryContext cloudName={CLOUDINARY_CLOUD_NAME}>
-                                    <Image publicId={this.state.uploadedFilePublicId}>
-                                        <Transformation
-                                            gravity="face"
-                                            crop="thumb"
-                                            width="150"
-                                            height="150"
-                                            radius="max"
-                                        />
-                                    </Image>
-                                </CloudinaryContext>
-                            </div>}
-                    </div>
-                </div>
+                <div />
             </div>
         );
     }
 }
 
-export default Cloudinary;
+export default FaceUpload;
