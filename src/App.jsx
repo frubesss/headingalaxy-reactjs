@@ -1,8 +1,9 @@
-import React, { Component } from 'react'
-import '../public/App.css'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import Form from './Form'
-import injectTapEventPlugin from 'react-tap-event-plugin'
+import React, { Component } from 'react';
+import '../public/App.css';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Form from './Form';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import AppBar from 'material-ui/AppBar';
 injectTapEventPlugin();
 
 class App extends Component {
@@ -10,6 +11,7 @@ class App extends Component {
         return (
             <MuiThemeProvider>
                 <div className="App">
+                    <AppBar title="Head In The Galaxy" />
                     <div className="App-header">
                         <h2>Head in galaxy</h2>
                     </div>
@@ -18,8 +20,8 @@ class App extends Component {
                     </div>
                 </div>
             </MuiThemeProvider>
-        )
+        );
     }
 }
 
-export default App
+export default App;

@@ -14,7 +14,6 @@ class Form extends React.Component {
             galaxySelected: false,
             activeGalaxy: '',
             faceUploaded: false,
-            nextDisabled: true,
             uploadedFileCloudinaryUrl: '',
             uploadedFilePublicId: ''
         };
@@ -26,8 +25,7 @@ class Form extends React.Component {
         const { stepIndex } = this.state;
         this.setState({
             stepIndex: stepIndex + 1,
-            finished: stepIndex >= 2,
-            nextDisabled: true
+            finished: stepIndex >= 2
         });
     };
 
@@ -36,24 +34,28 @@ class Form extends React.Component {
         if (stepIndex > 0) {
             this.setState({ stepIndex: stepIndex - 1 });
         }
-        this.setState({ nextDisabled: false });
     };
 
     handleGalaxySelection = activeIndex => {
         this.setState({
             galaxySelected: true,
-            activeGalaxy: activeIndex,
-            nextDisabled: false
+            activeGalaxy: activeIndex
         });
     };
 
     handleFaceUpload(uploadedFileCloudinaryUrl, uploadedFilePublicId) {
         this.setState({
             faceUploaded: true,
-            nextDisabled: false,
             uploadedFileCloudinaryUrl: uploadedFileCloudinaryUrl,
             uploadedFilePublicId: uploadedFilePublicId
         });
+    }
+
+    handleNextDisabled() {
+        if (this.state.stepIndex === 0 && this.state.galaxySelected === true) {
+            return false;
+        }
+        return !(this.state.stepIndex === 1 && this.state.faceUploaded === true);
     }
 
     getStepContent(stepIndex) {
@@ -84,7 +86,6 @@ class Form extends React.Component {
     render() {
         const { finished, stepIndex } = this.state;
         const contentStyle = { margin: '0 16px' };
-
         return (
             <div style={{ width: '100%', maxWidth: 700, margin: 'auto' }}>
                 <Stepper activeStep={stepIndex}>
@@ -123,7 +124,7 @@ class Form extends React.Component {
                                 />
                                 <RaisedButton
                                     label={stepIndex === 2 ? 'Finish' : 'Next'}
-                                    disabled={this.state.nextDisabled}
+                                    disabled={this.handleNextDisabled()}
                                     primary={true}
                                     onTouchTap={this.handleNext}
                                 />
