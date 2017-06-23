@@ -5,15 +5,6 @@
     color: white;
 }
 
-.App-intro {
-    font-size: large;
-}
-
-@keyframes App-logo-spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
 .galaxy-tile-selected {
     border: 2px solid #00BCD4;
 }
@@ -32,4 +23,33 @@
     height: 200px;
     border: 2px dashed rgb(102, 102, 102);
     border-radius: 5px;
+}
+
+.image-rotate {
+    -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+.image-circumference {
+    position: absolute;
+    margin: -20px;
+    animation: rot 3s infinite linear;
+}
+
+@keyframes rot {
+    from {
+        transform: rotate(0deg)
+        translate(-150px)
+        rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg)
+        translate(-150px)
+        rotate(-360deg);
+    }
 }

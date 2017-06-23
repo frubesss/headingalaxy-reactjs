@@ -4,6 +4,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import FaceUpload from './FaceUpload';
 import GalaxySelection from './GalaxySelection';
+import AnimationSelection from './AnimationSelection';
 
 class Form extends React.Component {
     constructor(props) {
@@ -77,7 +78,7 @@ class Form extends React.Component {
                     />
                 );
             case 2:
-                return '...';
+                return <AnimationSelection />;
             default:
                 return '...';
         }
