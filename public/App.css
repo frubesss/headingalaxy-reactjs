@@ -5,6 +5,10 @@
     color: white;
 }
 
+.tile-background {
+    background: #ecf0f1;
+}
+
 .tile-selected {
     border: 2px solid #00BCD4;
 }
