@@ -5,14 +5,8 @@
     color: white;
 }
 
-.galaxy-tile-selected {
+.tile-selected {
     border: 2px solid #00BCD4;
-}
-
-.Preview {
-    margin-top: 20px;
-    margin-left: 10px;
-    margin-right: 10px;
 }
 
 .stepper-buttons {
@@ -26,30 +20,33 @@
 }
 
 .image-rotate {
+    width:70px !important;
+    height:70px !important;
+    margin: 50px;
     -webkit-animation:spin 4s linear infinite;
     -moz-animation:spin 4s linear infinite;
     animation:spin 4s linear infinite;
 }
-
 @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
 .image-circumference {
-    position: absolute;
-    margin: -20px;
+    margin: 50px;
     animation: rot 3s infinite linear;
+    width:70px !important;
+    height:70px !important;
 }
 
 @keyframes rot {
     from {
         transform: rotate(0deg)
-        translate(-150px)
+        translate(-50px)
         rotate(0deg);
     }
     to {
         transform: rotate(360deg)
-        translate(-150px)
+        translate(-50px)
         rotate(-360deg);
     }
 }

@@ -14,6 +14,7 @@ class Form extends React.Component {
             stepIndex: 0,
             galaxySelected: false,
             activeGalaxy: '',
+            activeAnimation: '',
             faceUploaded: false,
             uploadedFileCloudinaryUrl: '',
             uploadedFilePublicId: ''
@@ -37,10 +38,16 @@ class Form extends React.Component {
         }
     };
 
-    handleGalaxySelection = activeIndex => {
+    handleGalaxySelection = activeGalaxy => {
         this.setState({
             galaxySelected: true,
-            activeGalaxy: activeIndex
+            activeGalaxy: activeGalaxy
+        });
+    };
+
+    handleAnimationSelection = activeAnimation => {
+        this.setState({
+            activeAnimation: activeAnimation
         });
     };
 
@@ -78,7 +85,12 @@ class Form extends React.Component {
                     />
                 );
             case 2:
-                return <AnimationSelection />;
+                return (
+                    <AnimationSelection
+                        onClick={this.handleAnimationSelection}
+                        activeAnimation={this.state.activeAnimation}
+                    />
+                );
             default:
                 return '...';
         }
