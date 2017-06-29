@@ -4,6 +4,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import FaceUpload from './FaceUpload';
 import GalaxySelection from './GalaxySelection';
 import AnimationSelection from './AnimationSelection';
+import Finish from './Finish'
 
 class Form extends React.Component {
     constructor(props) {
@@ -91,43 +92,35 @@ class Form extends React.Component {
         const contentStyle = { margin: '0 16px' };
         return (
             <div style={{ width: '100%', maxWidth: 700, margin: 'auto' }}>
-                <Stepper activeStep={stepIndex}>
-                    <Step>
-                        <StepLabel>Select Galaxy</StepLabel>
-                    </Step>
-                    <Step>
-                        <StepLabel>Upload Image</StepLabel>
-                    </Step>
-                    <Step>
-                        <StepLabel>Select Animation</StepLabel>
-                    </Step>
-                </Stepper>
-                <div style={contentStyle}>
-                    {finished
-                        ? <div>
-                            <a
-                                href="#"
-                                onClick={event => {
-                                    event.preventDefault();
-                                    this.setState({ stepIndex: 0, finished: false });
-                                }}
-                            >
-                                Click here
-                            </a>{' '}
-                            to reset the example.
-                        </div>
-                        : <div className="stepper-buttons">
-                            <div>{this.getStepContent(stepIndex)}</div>
-                            <div style={{ marginTop: 12 }}>
-                                <RaisedButton
-                                    label={stepIndex === 2 ? 'Finish' : 'Next'}
-                                    disabled={this.state.nextDisabled}
-                                    primary={true}
-                                    onTouchTap={this.handleNext}
-                                />
+                {finished
+                    ? <Finish activeGalaxy={this.state.activeGalaxy} activeAnimation={this.state.activeAnimation} />
+                    :
+                    <div className="test">
+                        <Stepper activeStep={stepIndex}>
+                            <Step>
+                                <StepLabel>Select Galaxy</StepLabel>
+                            </Step>
+                            <Step>
+                                <StepLabel>Upload Image</StepLabel>
+                            </Step>
+                            <Step>
+                                <StepLabel>Select Animation</StepLabel>
+                            </Step>
+                        </Stepper>
+                        <div style={contentStyle}>
+                            <div className="stepper-buttons">
+                                <div>{this.getStepContent(stepIndex)}</div>
+                                <div style={{ marginTop: 12 }}>
+                                    <RaisedButton
+                                        label={stepIndex === 2 ? 'Finish' : 'Next'}
+                                        disabled={this.state.nextDisabled}
+                                        primary={true}
+                                        onTouchTap={this.handleNext}
+                                    />
+                                </div>
                             </div>
-                        </div>}
-                </div>
+                        </div>
+                    </div>}
             </div>
         );
     }

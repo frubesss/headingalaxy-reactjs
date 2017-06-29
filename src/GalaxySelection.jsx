@@ -19,16 +19,16 @@ class GalaxySelection extends React.Component {
             <div>
                 <GridList>
                     <GridTile
-                        className={this.props.activeGalaxy === '1' ? 'tile-selected' : ''}
+                        className={this.props.activeGalaxy === 'galaxy1' ? 'tile-selected' : ''}
                         onClick={this.handleClick}
                     >
-                        <img src={galaxy1} alt="1" />
+                        <img src={galaxy1} alt="galaxy1" />
                     </GridTile>
                     <GridTile
-                        className={this.props.activeGalaxy === '2' ? 'tile-selected' : ''}
+                        className={this.props.activeGalaxy === 'galaxy2' ? 'tile-selected' : ''}
                         onClick={this.handleClick}
                     >
-                        <img src={galaxy2} alt="2" />
+                        <img src={galaxy2} alt="galaxy2" />
                     </GridTile>
                 </GridList>
             </div>
