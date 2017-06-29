@@ -1,7 +1,6 @@
 import React from 'react';
 import { Step, StepLabel, Stepper } from 'material-ui/Stepper';
 import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
 import FaceUpload from './FaceUpload';
 import GalaxySelection from './GalaxySelection';
 import AnimationSelection from './AnimationSelection';
@@ -17,7 +16,8 @@ class Form extends React.Component {
             activeAnimation: '',
             faceUploaded: false,
             uploadedFileCloudinaryUrl: '',
-            uploadedFilePublicId: ''
+            uploadedFilePublicId: '',
+            nextDisabled: true
         };
         this.handleGalaxySelection = this.handleGalaxySelection.bind(this);
         this.handleFaceUpload = this.handleFaceUpload.bind(this);
@@ -27,27 +27,23 @@ class Form extends React.Component {
         const { stepIndex } = this.state;
         this.setState({
             stepIndex: stepIndex + 1,
-            finished: stepIndex >= 2
+            finished: stepIndex >= 2,
+            nextDisabled: true
         });
-    };
-
-    handlePrev = () => {
-        const { stepIndex } = this.state;
-        if (stepIndex > 0) {
-            this.setState({ stepIndex: stepIndex - 1 });
-        }
     };
 
     handleGalaxySelection = activeGalaxy => {
         this.setState({
             galaxySelected: true,
-            activeGalaxy: activeGalaxy
+            activeGalaxy: activeGalaxy,
+            nextDisabled: false
         });
     };
 
     handleAnimationSelection = activeAnimation => {
         this.setState({
-            activeAnimation: activeAnimation
+            activeAnimation: activeAnimation,
+            nextDisabled: false
         });
     };
 
@@ -55,15 +51,9 @@ class Form extends React.Component {
         this.setState({
             faceUploaded: true,
             uploadedFileCloudinaryUrl: uploadedFileCloudinaryUrl,
-            uploadedFilePublicId: uploadedFilePublicId
+            uploadedFilePublicId: uploadedFilePublicId,
+            nextDisabled: false
         });
-    }
-
-    handleNextDisabled() {
-        if (this.state.stepIndex === 0 && this.state.galaxySelected === true) {
-            return false;
-        }
-        return !(this.state.stepIndex === 1 && this.state.faceUploaded === true);
     }
 
     getStepContent(stepIndex) {
@@ -129,15 +119,9 @@ class Form extends React.Component {
                         : <div className="stepper-buttons">
                             <div>{this.getStepContent(stepIndex)}</div>
                             <div style={{ marginTop: 12 }}>
-                                <FlatButton
-                                    label="Back"
-                                    disabled={stepIndex === 0}
-                                    onTouchTap={this.handlePrev}
-                                    style={{ marginRight: 12 }}
-                                />
                                 <RaisedButton
                                     label={stepIndex === 2 ? 'Finish' : 'Next'}
-                                    disabled={this.handleNextDisabled()}
+                                    disabled={this.state.nextDisabled}
                                     primary={true}
                                     onTouchTap={this.handleNext}
                                 />
