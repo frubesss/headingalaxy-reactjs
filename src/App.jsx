@@ -13,7 +13,6 @@ class App extends Component {
                 <div className="App">
                     <AppBar title="Head In The Galaxy" />
                     <div className="App-header">
-                        <h2>Head in galaxy</h2>
                     </div>
                     <div className="Form">
                         <Form />

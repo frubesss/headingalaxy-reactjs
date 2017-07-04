@@ -93,7 +93,7 @@ class Form extends React.Component {
         return (
             <div style={{ width: '100%', maxWidth: 700, margin: 'auto' }}>
                 {finished
-                    ? <Finish activeGalaxy={this.state.activeGalaxy} activeAnimation={this.state.activeAnimation} />
+                    ? <Finish activeGalaxy={this.state.activeGalaxy} activeAnimation={this.state.activeAnimation} faceUploadedUrl={this.state.uploadedFileCloudinaryUrl} />
                     :
                     <div className="test">
                         <Stepper activeStep={stepIndex}>
