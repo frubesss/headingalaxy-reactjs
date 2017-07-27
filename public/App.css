@@ -46,12 +46,12 @@
 @keyframes rot {
     from {
         transform: rotate(0deg)
-        translate(-50px)
+        translate(-45px)
         rotate(0deg);
     }
     to {
         transform: rotate(360deg)
-        translate(-50px)
+        translate(-45px)
         rotate(-360deg);
     }
 }

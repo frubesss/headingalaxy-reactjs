@@ -2,9 +2,6 @@ import React from 'react';
 import { Card, CardMedia, CardActions } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 
-
-
-
 export default class Finish extends React.Component {
 
     constructor(props) {

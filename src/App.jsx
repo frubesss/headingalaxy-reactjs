@@ -12,8 +12,6 @@ class App extends Component {
             <MuiThemeProvider>
                 <div className="App">
                     <AppBar title="Head In The Galaxy" />
-                    <div className="App-header">
-                    </div>
                     <div className="Form">
                         <Form />
                     </div>
