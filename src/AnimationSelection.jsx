@@ -17,19 +17,19 @@ class AnimationSelection extends React.Component {
         return (
             <div>
                 <GridList>
-                    <div className="tile-background" id="1" onClick={this.handleClick}>
+                    <div className="tile-background" id="rotation" onClick={this.handleClick}>
                         <GridTile
                             className={
-                                this.props.activeAnimation === '1' ? 'tile-selected' : ''
+                                this.props.activeAnimation === 'rotation' ? 'tile-selected' : ''
                             }
                         >
                             <img className="image-rotate" src={cat} alt="1" />
                         </GridTile>
                     </div>
-                    <div className="tile-background" id="2" onClick={this.handleClick}>
+                    <div className="tile-background" id="circumference" onClick={this.handleClick}>
                         <GridTile
                             className={
-                                this.props.activeAnimation === '2' ? 'tile-selected' : ''
+                                this.props.activeAnimation === 'circumference' ? 'tile-selected' : ''
                             }
                         >
                             <img className="image-circumference" src={cat} alt="2" />

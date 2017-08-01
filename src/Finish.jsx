@@ -8,15 +8,9 @@ export default class Finish extends React.Component {
         super(props);
         this.handleSelectedGalaxy = this.handleSelectedGalaxy.bind(this);
         this.handleSelectedAnimation = this.handleSelectedAnimation.bind(this);
-        this.handleCombineSelections = this.handleCombineSelections.bind(this);
-    }
-
-    componentDidMount() {
-        this.handleCombineSelections();
     }
 
     handleSelectedGalaxy(){
-
         let galaxy1 = new Image();
         galaxy1.src = require('../public/images/1.jpg');
 
@@ -24,36 +18,22 @@ export default class Finish extends React.Component {
         galaxy2.src = require('../public/images/2.jpg');
 
         if(this.props.activeGalaxy === 'galaxy1'){
-            return galaxy1
+            return galaxy1.src
         }
-        return galaxy2
+        return galaxy2.src
     }
 
     handleFaceUploaded(){
         let faceUploaded = new Image();
         faceUploaded.src = this.props.faceUploadedUrl;
-        return faceUploaded
+        return faceUploaded.src
     }
 
     handleSelectedAnimation(){
-    }
-
-    handleCombineSelections(){
-        const ctx = this.refs.canvas.getContext('2d');
-        const canvas = document.getElementById('canvas');
-
-        let galaxyImage = this.handleSelectedGalaxy();
-        let faceImage = this.handleFaceUploaded();
-
-        galaxyImage.onload = function() {
-            ctx.drawImage(galaxyImage, 0, 0, galaxyImage.width, galaxyImage.height);
-        };
-
-        faceImage.onload = function() {
-            ctx.drawImage(faceImage, canvas.width / 2 - faceImage.width / 2,
-                canvas.height / 2 - faceImage.height / 2, 150, 150);
-        };
-
+        if(this.props.activeAnimation === 'rotation'){
+            return 'final-animation-rotation'
+        }
+        return 'final-animation-circumference'
     }
 
     render() {
@@ -61,7 +41,10 @@ export default class Finish extends React.Component {
             <div className="finish-card">
                 <Card>
                     <CardMedia>
-                        <canvas id="canvas" ref="canvas" width="1920" height="1080"/>
+                        <div className="final-image-container">
+                            <img src={this.handleSelectedGalaxy()} className="final-galaxy-selected"/>
+                            <img src={this.handleFaceUploaded()} className={this.handleSelectedAnimation()}/>
+                        </div>
                     </CardMedia>
                     <CardActions>
                         <RaisedButton label="Download" primary={true} />

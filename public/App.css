@@ -38,12 +38,12 @@
 
 .image-circumference {
     margin: 50px;
-    animation: rot 3s infinite linear;
+    animation: small-rot 3s infinite linear;
     width:70px !important;
     height:70px !important;
 }
 
-@keyframes rot {
+@keyframes small-rot {
     from {
         transform: rotate(0deg)
         translate(-45px)
@@ -56,6 +56,45 @@
     }
 }
 
-.finish-card {
-    padding-top: 30px;
+.final-image-container{
+    position: relative;
+}
+
+.final-galaxy-selected{
+    width: 100%;
+    height: 100%;
+}
+
+.final-animation-rotation{
+    position: absolute;
+    width:70px;
+    height:70px;
+    bottom: 200px;
+    right: 315px;
+    -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
+}
+
+.final-animation-circumference{
+    position: absolute;
+    margin: 50px;
+    bottom: 130px;
+    right: 280px;
+    animation: large-rot 3s infinite linear;
+    width:70px !important;
+    height:70px !important;
+}
+
+@keyframes large-rot {
+    from {
+        transform: rotate(0deg)
+        translate(-100px)
+        rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg)
+        translate(-100px)
+        rotate(-360deg);
+    }
 }
