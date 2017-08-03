@@ -11,7 +11,9 @@ class App extends Component {
         return (
             <MuiThemeProvider>
                 <div className="App">
-                    <AppBar title="Head In The Galaxy" />
+                    <AppBar title="Head In The Galaxy"
+                            showMenuIconButton={false}
+                    />
                     <div className="Form">
                         <Form />
                     </div>

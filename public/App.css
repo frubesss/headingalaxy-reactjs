@@ -98,3 +98,7 @@
         rotate(-360deg);
     }
 }
+
+.finish-card {
+    padding-top: 20px;
+}
