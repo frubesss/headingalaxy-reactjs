@@ -46,9 +46,6 @@ export default class Finish extends React.Component {
                             <img src={this.handleFaceUploaded()} className={this.handleSelectedAnimation()}/>
                         </div>
                     </CardMedia>
-                    <CardActions>
-                        <RaisedButton label="Download" primary={true} />
-                    </CardActions>
                 </Card>
             </div>
         );
