@@ -1,5 +1,5 @@
 # Head In The Galaxy
-[![Code Climate](https://codeclimate.com/github/frubesss/headingalaxy-react/badges/gpa.svg)](https://codeclimate.com/github/frubesss/headingalaxy-react)
+[![Code Climate](https://codeclimate.com/github/frubesss/headingalaxy-reactjs/badges/gpa.svg)](https://codeclimate.com/github/frubesss/headingalaxy-reactjs)
 
 Finally you can put your head in a galaxy and make it spin!
 
