@@ -1,3 +1,5 @@
+engines:
+ratings:
 exclude_paths:
 - "scripts/build.js"
 - "scripts/start.js"
