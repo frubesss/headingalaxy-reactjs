@@ -27,7 +27,7 @@ Finally you can put your head in a galaxy and make it spin!
 
 1. Copy or rename the `config.json.example` file to `config.json`.
 
-1. Paste  the `upload_preset`, `upload_url`  and `cloud_name` values (without quotation marks) from the Cloudinary into the `CONVERSATION_PASSWORD` and `CONVERSATION_USERNAME` variables in the `config.json` file. For example:
+1. Paste  the `upload_preset`, `upload_url` and `cloud_name` values from Cloudinary into the `upload_preset`, `upload_url` and `cloud_name` variables in the `config.json` file. For example:
 
     ```
     "upload_preset": <upload_preset>,
