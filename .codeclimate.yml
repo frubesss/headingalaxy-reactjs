@@ -1,0 +1,4 @@
+exclude_paths:
+- "scripts/build.js"
+- "scripts/start.js"
+- "scripts/test.js"
