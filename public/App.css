@@ -74,6 +74,7 @@
     -webkit-animation:spin 4s linear infinite;
     -moz-animation:spin 4s linear infinite;
     animation:spin 4s linear infinite;
+    border-radius: 50%;
 }
 
 .final-animation-circumference{
@@ -84,6 +85,7 @@
     animation: large-rot 3s infinite linear;
     width:70px !important;
     height:70px !important;
+    border-radius: 50%;
 }
 
 @keyframes large-rot {
