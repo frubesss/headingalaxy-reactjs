@@ -3,7 +3,7 @@
 
 Finally you can put your head in a galaxy and make it spin!
 
-![Demo](readme_images/demo.gif)
+![Demo](https://github.com/frubesss/headingalaxy-reactjs/blob/master/readme_images/2017-09-20%2018.29.12.gif)
 
 ## Built With
 
