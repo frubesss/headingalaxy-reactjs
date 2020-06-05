@@ -44,7 +44,7 @@
     "whatwg-fetch": "2.0.2"
   },
   "dependencies": {
-    "cloudinary-react": "^1.1.0",
+    "cloudinary-react": "^1.5.0",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
     "react-dropzone": "^3.12.2",
